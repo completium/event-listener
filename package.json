@@ -1,6 +1,6 @@
 {
   "name": "@completium/event-listener",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Detects events emitted by smart contracts on the Tezos blockchain, and executes registered event handler functions.",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/completium/event-well-crank",
   "scripts": {
-    "build": "npx tsc --outDir build",
+    "build": "rm -fr build && npx tsc --outDir build",
     "test": "ts-mocha --timeout 0 --slow 99999999999999999999 ./tests/test.spec.ts",
     "bind": "archetype --target bindings-ts ./tests/contracts/testevent.arl > ./tests/test_bindings_gen.ts",
     "deploy": "mocha --timeout 0 --slow 99999999999999999999 ./tests/deploy.js"
