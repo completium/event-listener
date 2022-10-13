@@ -1,0 +1,26 @@
+# Unit
+{
+  storage unit;
+  parameter (pair %emit (nat %i) (string %s));
+  code { NIL operation;
+         DIG 1;
+         UNPAIR;
+         UNPAIR;
+         SWAP;
+         NIL operation;
+         NIL operation;
+         DUP 6;
+         ITER { CONS };
+         DUP 3;
+         DUP 5;
+         PAIR;
+         EMIT %TestEvent (pair (nat %ival) (string %sval));
+         CONS;
+         ITER { CONS };
+         DIP { DIG 3; DROP };
+         DUG 3;
+         DROP 2;
+         DIG 1;
+         PAIR };
+}
+
