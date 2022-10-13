@@ -99,8 +99,6 @@ export function processBlock(block: BlockResponse): Array<ApplyProcessor<any>> {
   return apps
 }
 
-const MAX_PROCESSED = 1000
-
 /**
  *
  * @param bottom block response to stop crawling at.
@@ -110,9 +108,8 @@ const MAX_PROCESSED = 1000
 async function crawl(bottom: BlockResponse): Promise<string> {
   let current: BlockResponse = await client.getBlock({ block: `head~${horizon}` })
   let nextBottom = current.hash
-  let nbProcessed = 0
   let apps: Array<ApplyProcessor<any>> = []
-  while (bottom.hash !== current.hash && nbProcessed++ < MAX_PROCESSED) {
+  while (bottom.hash !== current.hash && bottom.header.level < current.header.level) {
     dump("processing block " + current.hash + " ...")
     let blockApps = processBlock(current)
     apps = blockApps.concat(apps)
