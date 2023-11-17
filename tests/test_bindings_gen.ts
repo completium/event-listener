@@ -15,8 +15,8 @@ const is_TestEvent = (t : string) => {
 }
 
 const handle_TestEvent = (handler : EventProcessor<TestEvent>) => (event : any, data ?: EventData) => {
-  handler({ival : event.ival,
-           sval : event.sval}, data)
+  handler({ival : event.args[0].int,
+           sval : event.args[1].string}, data)
 }
 
 export function register_TestEvent(source : string, handler : EventProcessor<TestEvent>) {

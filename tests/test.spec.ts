@@ -6,7 +6,7 @@ import fs from 'fs';
 import { run_listener } from '../src';
 import { register_TestEvent, TestEvent } from './test_bindings_gen';
 
-const endpoint = 'https://kathmandunet.ecadinfra.com';
+const endpoint = 'https://ghostnet.ecadinfra.com';
 
 const Tezos = new TezosToolkit(endpoint);
 

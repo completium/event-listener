@@ -21,8 +21,7 @@ const dump = (s: string) => {
 const createEvent = (eventDef: EventDefinition<any>, internalOp: InternalOperationResult): UnpackedEvent | undefined => {
   if (internalOp.type !== undefined && internalOp.payload !== undefined && internalOp.tag !== undefined) {
     if (eventDef.filter(internalOp.tag)) {
-      const data = to_taquito_object(internalOp.type, internalOp.payload);
-      return { _kind: internalOp.tag, _event: data };
+      return { _kind: internalOp.tag, _event: internalOp.payload };
     }
   } else {
     // throw new Error('Error: Malformed event')
